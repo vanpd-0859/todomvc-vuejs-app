@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="todoapp">
+    <Header/>
+    <Main v-show="todos.length > 0"/>
+    <Footer v-show="todos.length > 0"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
+import { mapState } from "vuex";
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    Header,
+    Main,
+    Footer
+  },
+  computed: mapState([
+	'todos'
+  ])
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url('./assets/css/main.css');
 </style>
